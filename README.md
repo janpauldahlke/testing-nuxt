@@ -1,7 +1,7 @@
 # dextra
 
 > My delightful Nuxt.js project
-
+> install ```npm install vue-loader@13.7.2 --save-dev``` to solve https://github.com/nuxt/nuxt.js/issues/3400
 ## Build Setup
 
 ``` bash

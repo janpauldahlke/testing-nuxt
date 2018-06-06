@@ -10,12 +10,13 @@
 <script>
 export default({
   created(){
-    console.log(this.$router.history)
+    // console.log(this.$router.history)
   },
   methods: {
     routeBack() {
       this.$router.push('/')
     }
-  }
+  },
+  layout: 'users'
 })
 </script>
