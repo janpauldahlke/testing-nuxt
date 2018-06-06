@@ -9,3 +9,18 @@ npm-debug.log
 
 # Nuxt generate
 dist
+
+
+##------
+# blog ignore
+
+# node_modules
+blog/node_modules/
+# logs
+blog/npm-debug.log
+
+# Nuxt build
+blog/.nuxt
+
+# Nuxt generate
+blog/dist

@@ -1,3 +1,10 @@
+# !! there are deeper nested projects here
+#### not the best way, but one only wants one repository here
+> checkout the repo
+> navigate into it and there type `cd blog`
+> run npm dev from here
+> i created it via ```npx create-nuxt-app blog```
+
 # dextra
 
 > My delightful Nuxt.js project
