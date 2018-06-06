@@ -1,5 +1,7 @@
 <template>
+<div>
   <h1>user number : {{  id }} </h1>
+</div>
 </template>
 
 <script>

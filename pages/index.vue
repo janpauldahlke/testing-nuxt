@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header/>
     <section class="container">
       <br>
       <div>
@@ -12,12 +11,8 @@
 </template>
 
 <script>
-import Header from '~/components/header'
 
 export default {
-  components: {
-    Header
-  },
   data() {
     return {
       id: ''
