@@ -17,6 +17,6 @@ export default({
       this.$router.push('/')
     }
   },
-  layout: 'users'
+  layout: 'header'
 })
 </script>

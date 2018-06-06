@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header />
     <nuxt-link
       to='/products/1'
     >nach products 1</nuxt-link>
@@ -10,4 +11,10 @@
 </template>
 
 <script>
+import Header from '~/components/header'
+export default({
+  components: {
+    Header
+  }
+})
 </script>
