@@ -12,7 +12,7 @@
 
        <PostPreview
         id="1"
-        title="AYBBU"
+        title="SCIENCE"
         previewText="there is always starcraft"
         thumbnail="https://i.imgur.com/OqvByFR.png"
        />
@@ -54,12 +54,13 @@ export default({
 
 
 .intro {
-  height: 150px;
+  height: 250px;
   position: relative;
   padding: 30px;
   box-sizing: border-box;
   background-position: center;
   background-size: cover;
+  background-image: url('~/assets/background.jpg')
 }
 
 .intro h1 {
