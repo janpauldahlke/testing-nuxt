@@ -3,46 +3,20 @@
     <section class="intro">
       <h1>get the latest tech news !!</h1>
     </section>
+
+    <PostsList />
     
-    <section class="featured-posts">
-      <!-- this needs to be a dynamic component -->
-      <!-- do a v-for here -->
-      <!-- -->
-
-       <PostPreview
-        id="1"
-        title="SCIENCE"
-        previewText="there is always starcraft"
-        thumbnail="https://i.imgur.com/OqvByFR.png"
-       />
-
-       <PostPreview
-        id="2"
-        title="GLHF"
-        previewText="illidan is superman!"
-        thumbnail="https://i.imgur.com/mljKj5M.jpg"
-       />
-
-       <PostPreview
-        id="3"
-        title="once day soylent"
-        previewText="gluten free"
-        thumbnail="https://i.imgur.com/NzyvDqx.jpg"
-       />
-       
-    </section>
   </div>
 </template>
 
 <script>
-import PostPreview from '~/components/posts/PostPreview'
+import PostsList from '~/components/posts/PostsList'
 
 export default({
   components: {
-    PostPreview
+    PostsList
   }
 })
-
 </script>
 
 <style>
@@ -86,14 +60,6 @@ export default({
   }
 }
 
-.featured-posts {
-  display: flex;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
 
 
 
