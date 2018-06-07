@@ -4,6 +4,8 @@
     v-if="show"
     class="sidenav-backdrop"
     @click="$emit('close')"></div>
+  <!-- look here for <transition /> usage -->
+  <!-- https://vuejs.org/v2/guide/transitions.html -->
   <transition name="slide-side">
     <div
       v-if="show"
