@@ -4,17 +4,49 @@
       <h1>get the latest tech news !!</h1>
     </section>
 
-    <PostsList />
+    <PostsList
+      :posts="showFirstPosts"
+    />
     
   </div>
 </template>
 
 <script>
 import PostsList from '~/components/posts/PostsList'
+import axios from 'axios'
 
 export default({
   components: {
     PostsList
+  },
+  //this is a little bit akward because we do this again in posts/index
+  //remove this to store async action later on
+  created(){
+    this.getPosts()
+  },
+  data() {
+    return {
+      list: []
+    }
+  },
+  computed: {
+    showFirstPosts(){
+      return this.list.slice(0,3) // slice defines here how many posts to show on start page
+    }
+  },
+  methods: {
+    getPosts(){
+      const url = "http://localhost:4000/posts"
+
+      axios.get(url)
+        .then((res) => {
+          // console.log('axios', res.data)
+          this.list = res.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
   }
 })
 </script>

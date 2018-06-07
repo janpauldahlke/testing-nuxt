@@ -10,7 +10,7 @@ module.exports = function() {
         postPreview : faker.lorem.slug(),
         content:  faker.lorem.paragraph(),
         author : faker.name.lastName(),
-        thumbnail : faker.image.technics().replace('http', 'https'), // :-)
+        thumbnail : faker.random.image().replace('http', 'https'), // :-)
       }
     }),
  

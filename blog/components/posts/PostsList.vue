@@ -5,7 +5,7 @@
       <!-- do a v-for here -->
       <!-- -->
       <PostPreview
-        v-for="(post, index) in list"
+        v-for="(post, index) in posts"
         :key="index.toString()"
         :id="post.id.toString()"
         :title="post.title"
@@ -18,7 +18,6 @@
 
 <script>
 import PostPreview from '~/components/posts/PostPreview'
-import axios from 'axios'
 
 export default({
   name: 'Postslist',
@@ -34,23 +33,6 @@ export default({
   data(){
     return{
       list: [],
-    }
-  },
-  created(){
-    this.getPosts()
-  },
-  methods: {
-    getPosts(){
-      const url = "http://localhost:4000/posts"
-
-      axios.get(url)
-        .then((res) => {
-          // console.log(res.data)
-          this.list = res.data
-        })
-        .catch((err) => {
-          console.log(err)
-        })
     }
   }
 })
