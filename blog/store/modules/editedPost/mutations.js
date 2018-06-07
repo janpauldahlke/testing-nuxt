@@ -14,6 +14,6 @@ export default function(){
     },
     set_id(state, id){
       state.id = id
-    }
+    },
   }
 }

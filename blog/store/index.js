@@ -6,7 +6,7 @@ const createStore = () => {
   return new Vuex.Store({
     modules,
     mutations: {
-      updateField
+      updateField,
     },
     getters: {
       getField

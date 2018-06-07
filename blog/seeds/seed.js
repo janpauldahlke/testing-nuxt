@@ -3,14 +3,14 @@ module.exports = function() {
   let _ = require('lodash');
 
   return {
-      posts : _.times(15, function (num) {
+      posts : _.times(2, function (num) {
       return {
         id : num,
         title : faker.lorem.sentence(),
         postPreview : faker.lorem.slug(),
         content:  faker.lorem.paragraph(),
         author : faker.name.lastName(),
-        thumbnail : faker.random.image().replace('http', 'https'), // :-)
+        thumbnail : faker.random.image().replace('http', 'https'), // this is so poorly slow!!!!
       }
     }),
  

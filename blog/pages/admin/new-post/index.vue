@@ -36,8 +36,13 @@ export default {
     AppInputControl,
   },
   methods: {
-    onSave(){
-      //
+    async onSave(){
+      const wait = this.$store.dispatch('postNewPost')
+
+      if(wait){
+        this.$store.commit('set_emptyStore')
+      }
+      
     },
     onCancel(){
       //
