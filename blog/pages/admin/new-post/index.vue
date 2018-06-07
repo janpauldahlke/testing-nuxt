@@ -4,13 +4,13 @@
       <form
         @submit.prevent="onSave"
       >
-        <app-input-control v-model="editedPost.author">author name</app-input-control>
-        <app-input-control v-model="editedPost.title">title</app-input-control>
-        <app-input-control v-model="editedPost.postPreview"> preview subhead</app-input-control>
-        <app-input-control v-model="editedPost.thumbnail">link to thumb</app-input-control>
+        <app-input-control v-model="author">author name</app-input-control>
+        <app-input-control v-model="title">title</app-input-control>
+        <app-input-control v-model="postPreview"> preview subhead</app-input-control>
+        <app-input-control v-model="thumbnail">link to thumb</app-input-control>
         <app-input-control
           control-type="textarea"
-          v-model="editedPost.content"
+          v-model="content"
         >Content</app-input-control>
         <app-button
           type="submit"
@@ -28,22 +28,12 @@
 <script>
 import AppButton from '~/components/ui/AppButton'
 import AppInputControl from '~/components/ui/AppControlInput'
+import { mapFields } from 'vuex-map-fields';
 
 export default {  
   components: {
     AppButton,
     AppInputControl,
-  },
-  data(){
-    return {
-      editedPost: {
-        author: '',
-        title: '',
-        postPreview: '',
-        thumbnail: '',
-        content: '',
-      }
-    }
   },
   methods: {
     onSave(){
@@ -52,7 +42,17 @@ export default {
     onCancel(){
       //
     }
-  }
+  },
+  computed: {
+    
+    ...mapFields([
+      'editedPost.thumbnail',
+      'editedPost.author',
+      'editedPost.title',
+      'editedPost.content',
+      'editedPost.postPreview',
+    ]),
+  },
 }
 </script>
 

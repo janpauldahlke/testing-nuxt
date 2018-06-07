@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "nuxt": "^1.0.0"
+    "nuxt": "^1.0.0",
+    "vuex-map-fields": "^1.2.3"
   },
   "devDependencies": {
     "cross-env": "^5.0.1",
