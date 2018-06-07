@@ -14,7 +14,9 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', type:'text/css', href: 'https://fonts.googleapis.com/css?family=Noto+Sans'}
+      /* <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> */
     ]
   },
 
@@ -27,6 +29,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~/assets/styles/main.css',
   ],
 
   /*
