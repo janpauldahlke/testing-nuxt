@@ -72,6 +72,8 @@ a {
 .post-content {
   padding: 10px;
   text-align: center;
+  height: 100%;
+  min-height: 200px;
 }
 
 a:hover .post-content,

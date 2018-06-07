@@ -3,8 +3,7 @@
     <section class="intro">
       <h1>get the latest tech news !!</h1>
     </section>
-    <br>
-    <hr>
+    
     <section class="featured-posts">
       <!-- this needs to be a dynamic component -->
       <!-- do a v-for here -->
@@ -50,6 +49,8 @@ export default({
 .homepage
 {
   min-height: 100vh;
+  background-color: rgb(211, 211, 211);
+
 }
 
 
@@ -64,6 +65,7 @@ export default({
 }
 
 .intro h1 {
+  text-align: center;
   position: absolute;
   top: 10%;
   left: 5%;
