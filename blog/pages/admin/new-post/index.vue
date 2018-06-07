@@ -6,6 +6,7 @@
       >
         <app-input-control v-model="editedPost.author">author name</app-input-control>
         <app-input-control v-model="editedPost.title">title</app-input-control>
+        <app-input-control v-model="editedPost.postPreview"> preview subhead</app-input-control>
         <app-input-control v-model="editedPost.thumbnail">link to thumb</app-input-control>
         <app-input-control
           control-type="textarea"
@@ -38,6 +39,7 @@ export default {
       editedPost: {
         author: '',
         title: '',
+        postPreview: '',
         thumbnail: '',
         content: '',
       }
