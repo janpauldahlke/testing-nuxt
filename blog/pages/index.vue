@@ -5,7 +5,7 @@
     </section>
 
     <PostsList
-      :posts="showFirstPosts"
+      :posts="list"
     />
     
   </div>
@@ -21,8 +21,10 @@ export default({
   },
   //this is a little bit akward because we do this again in posts/index
   //remove this to store async action later on
-  created(){
-    this.getPosts()
+  async beforeCreate(){
+    this.list = await this.$store.dispatch('getAllFilesFromServer')
+    // one should think about to write this into store ti give the user the PWA feeling
+    // also it would render way faster with localstorage?
   },
   data() {
     return {
@@ -32,20 +34,6 @@ export default({
   computed: {
     showFirstPosts(){
       return this.list.slice(0,3) // slice defines here how many posts to show on start page
-    }
-  },
-  methods: {
-    getPosts(){
-      const url = "http://localhost:4000/posts"
-
-      axios.get(url)
-        .then((res) => {
-          // console.log('axios', res.data)
-          this.list = res.data
-        })
-        .catch((err) => {
-          console.log(err)
-        })
     }
   }
 })
