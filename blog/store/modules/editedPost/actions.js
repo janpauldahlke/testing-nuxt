@@ -24,6 +24,9 @@ export default {
           thumbnail: state.thumbnail,
         }
       )
+
+      return create // do not forget to return this
+
     } catch(error) {
       console.log(error)
     }

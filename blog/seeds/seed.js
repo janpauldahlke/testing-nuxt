@@ -3,7 +3,7 @@ module.exports = function() {
   let _ = require('lodash');
 
   return {
-      posts : _.times(15, function (num) {
+      posts : _.times(4, function (num) {
       return {
         id : num,
         title : faker.lorem.sentence(),
@@ -13,6 +13,6 @@ module.exports = function() {
         thumbnail : faker.random.image().replace('http', 'https'), // :-)
       }
     }),
- 
+
   }
 }
