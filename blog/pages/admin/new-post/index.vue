@@ -30,21 +30,22 @@ import AppButton from '~/components/ui/AppButton'
 import AppInputControl from '~/components/ui/AppControlInput'
 import { mapFields } from 'vuex-map-fields';
 
-export default {  
+export default {
   components: {
     AppButton,
     AppInputControl,
   },
   methods: {
-    onSave(){
-      //
+    async onSave(){
+      console.log('from onSave')
+      await this.$store.dispatch('createNewPost')
     },
     onCancel(){
       //
     }
   },
   computed: {
-    
+
     ...mapFields([
       'editedPost.thumbnail',
       'editedPost.author',
