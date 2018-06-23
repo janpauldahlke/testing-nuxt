@@ -11,6 +11,10 @@
         <li class="nav-item"><nuxt-link to="/posts">Blog</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/admin">Admin</nuxt-link></li>
+        <!-- improve this to getters -->
+        <li
+          v-if="$store.state.application.isLoggedIn"
+          class="nav-item"><div @click="logOut">Logout</div></li>
       </ul>
     </div>
   </header>
@@ -24,7 +28,12 @@ export default {
   name: "TheHeader",
   components: {
     TheSideNavToggle
-  }
+  },
+  methods: {
+    logOut() {
+      this.$store.commit('logOut')
+    },
+  },
 };
 </script>
 
@@ -82,13 +91,16 @@ export default {
   margin: 0 10px;
 }
 
-.nav-item a {
+.nav-item a,
+.nav-item div {
   text-decoration: none;
   color: white;
+  cursor: pointer;
 }
 
 .nav-item a:hover,
 .nav-item a:active,
+.nav-item div:hover,
 .nav-item a.nuxt-link-active {
   color: #6fffff;
 }

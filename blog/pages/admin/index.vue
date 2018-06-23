@@ -1,6 +1,11 @@
 <template>
   <div class="admin-page">
-    <section class="new-post">
+    <div
+      v-if="!$store.state.application.isLoggedIn"
+    >
+      <AdminLogin />
+    </div>
+    <section class="new-post" v-else>
       <button
         @click="$router.push('/admin/new-post')"
       >add new post</button>
@@ -17,10 +22,12 @@
 
 <script>
 import PostsList from '~/components/posts/PostsList'
+import AdminLogin from '~/components/application/AdminLogin'
 
 export default {
   components: {
-    PostsList
+    PostsList,
+    AdminLogin,
   },
   data(){
     return {
