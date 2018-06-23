@@ -13,6 +13,6 @@ module.exports = function() {
         thumbnail : faker.random.image().replace('http', 'https'), // this is so poorly slow!!!!
       }
     }),
- 
+
   }
 }

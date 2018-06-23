@@ -1,16 +1,22 @@
 <template>
   <div class="admin-new-post-page">
+    <div
+      class="success"
+      v-if="showSuccess"
+    >Dein Blog Post wurde erstellt
+      <span class="close-button" @click="closeSuccess">X</span>
+    </div>
     <section class="new-post-form">
       <form
         @submit.prevent="onSave"
       >
-        <app-input-control v-model="author">author name</app-input-control>
-        <app-input-control v-model="title">title</app-input-control>
-        <app-input-control v-model="postPreview"> preview subhead</app-input-control>
-        <app-input-control v-model="thumbnail">link to thumb</app-input-control>
+        <app-input-control v-model="newPost.author">author name</app-input-control>
+        <app-input-control v-model="newPost.title">title</app-input-control>
+        <app-input-control v-model="newPost.postPreview"> preview subhead</app-input-control>
+        <app-input-control v-model="newPost.thumbnail">link to thumb</app-input-control>
         <app-input-control
           control-type="textarea"
-          v-model="content"
+          v-model="newPost.content"
         >Content</app-input-control>
         <app-button
           type="submit"
@@ -28,36 +34,52 @@
 <script>
 import AppButton from '~/components/ui/AppButton'
 import AppInputControl from '~/components/ui/AppControlInput'
-import { mapFields } from 'vuex-map-fields';
+//  import { mapFields } from 'vuex-map-fields';
 
-export default {  
+export default {
   components: {
     AppButton,
     AppInputControl,
   },
-  methods: {
-    async onSave(){
-      const wait = this.$store.dispatch('postNewPost')
-
-      if(wait){
-        this.$store.commit('set_emptyStore')
-      }
-      
-    },
-    onCancel(){
-      //
+  data() {
+    return{
+      showSuccess: false,
+      newPost: {
+        thumbnail: '',
+        author: '',
+        title:'',
+        content: '',
+        postPreview: '',
+      },
     }
   },
-  computed: {
-    
-    ...mapFields([
-      'editedPost.thumbnail',
-      'editedPost.author',
-      'editedPost.title',
-      'editedPost.content',
-      'editedPost.postPreview',
-    ]),
+  methods: {
+    async onSave(){
+      const success = await this.$store.dispatch('createNewPost', this.newPost) // how to pass result success to here?
+      if (success) {
+        this.$store.commit('set_empty_store')
+        this.showSuccess= true
+      }
+      else {
+        console.log('an OnSaveError')
+      }
+    },
+    onCancel(){
+      this.$store.commit('set_empty_store')
+    },
+    closeSuccess() {
+      this.showSuccess = false
+    },
   },
+  // computed: {
+  //   ...mapFields([
+  //     'editedPost.thumbnail',
+  //     'editedPost.author',
+  //     'editedPost.title',
+  //     'editedPost.content',
+  //     'editedPost.postPreview',
+  //   ]),
+  // },
 }
 </script>
 
@@ -65,5 +87,16 @@ export default {
 <style>
   .new-post-form{
     margin: 0px 20px;
+  }
+  .success{
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    font-size: 24px;
+    background: lightgreen;
+  }
+  .close-button{
+    background: lightblue;
+    height: 30px;
   }
 </style>

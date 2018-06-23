@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 const url = 'http://localhost:4000/posts' // this is seeds server
 
 export default {
@@ -8,27 +7,27 @@ export default {
   // it should post our blog post, instead of fetching a list here
   // TODO: action to post
   async getAllFilesFromServer({ state, commit, rootState}){
-    
 
     const ax = await axios.get(url)
-    //console.log(ax.data)  
+    //console.log(ax.data)
     if(ax.data.length > 0) {
       return ax.data
     }
   },
 
+  async createNewPost({state, commit, rootState}, post ){
 
-  async postNewPost({ state, commit, rootState}){
+    try {
+      const create = await axios.post(
+        url,
+        post
+      )
 
-    // console.log('state', state)
-    // console.log('commit', commit)
-    // console.log('rootState', rootState)
+      return create // do not forget to return this
 
-    const http_post = await axios.post(url, 
-      state
-    )
+    } catch(error) {
+      console.log(error)
+    }
+
   }
-
-  //there should be more error handling here
-
 }
