@@ -21,9 +21,11 @@
             <div>{{ post.author }}</div>
             <div class="buttons">
               <button
+                class="btn btn-delete"
                 @click="deleteASinglePostById(post.id)"
               >delete post</button>
               <button
+                class="btn btn-edit"
                 @click="getSinglePostById(post.id)"
               >edit post</button>
             </div>
@@ -91,6 +93,7 @@ ul li {
   border: 1px solid green;
   list-style: none;
   position: relative;
+  margin-bottom: 10px;
 }
 
 ul .buttons {
@@ -98,5 +101,31 @@ ul .buttons {
   top: 5px;
   right: 0px;
 }
+
+.btn {
+  text-align: center;
+}
+
+.btn-delete {
+  background-color:lightcoral;
+}
+
+.btn-delete:hover {
+  background-color: red
+}
+
+.btn-edit {
+  background: lightgreen
+}
+
+.btn-edit:hover{  
+  background-color:green
+}
+
+
+
+/* *no scss poor world*/
+
+
 </style>
 

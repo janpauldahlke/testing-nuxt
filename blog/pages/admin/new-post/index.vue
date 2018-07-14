@@ -64,6 +64,10 @@ export default {
         this.$store.commit('set_empty_store')
         this.showSuccess= true
         this.$router.push('/admin')
+        this.$store.commit('toggleModal', {
+          title: 'Success',
+          message: 'You created a post',
+        })
       }
       else {
         console.log('an OnSaveError')

@@ -13,5 +13,14 @@ export default {
   },
   nullifyPostIndex(){
     state.postIndex = null
-  }
+  },
+  toggleModal(state, blob ){ // we need default values here
+    state.showLightBox = !state.showLightBox
+    if(state.showLightBox) {
+      state.lightBox = {
+        title : blob.title,
+        message: blob.message,
+      }
+    }
+  },
 }

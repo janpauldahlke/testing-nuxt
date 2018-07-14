@@ -70,6 +70,10 @@ export default {
     onEdit() {
       this.$store.dispatch('editPost', this.post, this.$store.state.application.postIndex)
       // there should be a loding spinner and a success event here
+      this.$store.commit('toggleModal', {
+        title: `Success`,
+        message: `Yout edited the title of post ${this.post.id}`
+      })
       this.$router.push('/admin')
     },
   }
