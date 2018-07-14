@@ -50,7 +50,7 @@ export default {
     }
   },
 
-  async deletePost(id){
+  async deletePost({}, id){
     try{
       const deletedPost = await axios.delete(`${url}/${id}`)
       return deletedPost

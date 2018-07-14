@@ -1,6 +1,7 @@
 <template>
   <button
     class="button"
+    :disabled="clickable"
     :class="btnStyle"
     v-bind="$attrs"
     v-on="$listeners"><slot /></button>
@@ -13,6 +14,10 @@ export default {
     btnStyle: {
       type: String,
       default: ''
+    },
+    clickable: {
+      type: Boolean,
+      default: false,
     }
   }
 }

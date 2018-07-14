@@ -63,6 +63,7 @@ export default {
       if (success) {
         this.$store.commit('set_empty_store')
         this.showSuccess= true
+        this.$router.push('/admin')
       }
       else {
         console.log('an OnSaveError')

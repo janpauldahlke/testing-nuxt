@@ -19,9 +19,14 @@
           <li v-for="post in list" :key="post.id">
             <div>{{ post.title }}</div>
             <div>{{ post.author }}</div>
-            <button
-              @click="getSinglePostById(post.id)"
-            >edit post</button>
+            <div class="buttons">
+              <button
+                @click="deleteASinglePostById(post.id)"
+              >delete post</button>
+              <button
+                @click="getSinglePostById(post.id)"
+              >edit post</button>
+            </div>
           </li>
         </ul>
       </div>
@@ -56,8 +61,13 @@ export default {
    getSinglePostById(id){
      this.$store.commit('setPostIndex', id)
      this.$router.push('/admin/edit-post')
-     
-   }
+   },
+   deleteASinglePostById(id) {
+     if(process.browser) {
+       const result = window.confirm('delete post')
+       return result ? this.$store.dispatch('deletePost', id) : void null
+     }
+   },
   },
 }
 </script>
@@ -83,7 +93,7 @@ ul li {
   position: relative;
 }
 
-ul button {
+ul .buttons {
   position: absolute;
   top: 5px;
   right: 0px;

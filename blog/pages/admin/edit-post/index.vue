@@ -19,6 +19,7 @@
           type="submit"
         >Edit</app-button>
         <app-button
+          :clickable="isUpdatedPost"
           type="button"
           btn-style="cancel"
         >Cancel</app-button>
@@ -34,6 +35,11 @@
 import AppInputControl from '~/components/ui/AppControlInput'
 import AppButton from '~/components/ui/AppButton'
 
+// because missing a nice store, we need to refetch on update
+// unkewl && slow // abuse vuex to store all posts there
+// re-iterate thinking
+
+
 export default {
   components: {
     AppInputControl,
@@ -42,24 +48,44 @@ export default {
   data() {
     return {
       post: {},
+
+      // this sucks
+      // find out, react equivalent to ComponentWillRecieveewProps
+      // this sucks, we will burn in endles while for this!!
+      // and it is not working,
+      // not only it is bad, it is also not working
+      isFirstDataChange: false,
+      isUpdatedPost: false,
     }
   },
   methods: {
     onEdit() {
       this.$store.dispatch('editPost', this.post, this.$store.state.application.postIndex)
-    }
+      // there should be a loding spinner and a success event here
+      this.$router.push('/admin')
+    },
   },
   async beforeMount() {
     if(this.$store.state.application.postIndex !== null /* weird typing here */) {
       try {
       const id = this.$store.state.application.postIndex
       const getPost = await this.$store.dispatch('getSinglePostFromServer', id)
-      return this.post = {...getPost}
+      this.post = {...getPost}
+      // total MURKS aber looft, What would jesus do?
+      this.isFirstDataChange = true
+      return void 0 // this is mean
     } catch(err) {
       console.log(err)
       }  
     }
   },
+  updated(){
+    console.log('updated triggers', this.isUpdatedPost)
+    if(this.isFirstDataChange){ // monade weil ja alle attribute durch change ei updat werfen, somit erreicht man nix!! frust!
+    // wo is mein react componentWillReciveProps(oldProps, newProps) !!! wie macht man das bei VUEJS
+      this.isUpdatedPost = true
+    }
+  }
 }
 </script>
 
