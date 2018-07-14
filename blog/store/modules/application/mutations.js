@@ -6,5 +6,12 @@ export default {
   logOut(state) {
     state.isLoggedIn = false
     localStorage.setItem('isLoggedIn', JSON.stringify(false))
+  },
+
+  setPostIndex(state, id){
+    state.postIndex = id
+  },
+  nullifyPostIndex(){
+    state.postIndex = null
   }
 }

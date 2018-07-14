@@ -1,3 +1,7 @@
+<!-- 
+  new post also contains edit post now is this correct?
+  lets make it a standalone page
+-->
 <template>
   <div class="admin-new-post-page">
     <div

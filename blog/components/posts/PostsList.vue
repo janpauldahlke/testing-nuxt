@@ -19,7 +19,7 @@
 <script>
 import PostPreview from '~/components/posts/PostPreview'
 
-export default({
+export default{
   name: 'Postslist',
   components: {
     PostPreview
@@ -35,7 +35,7 @@ export default({
       list: [],
     }
   }
-})
+}
 
 </script>
 

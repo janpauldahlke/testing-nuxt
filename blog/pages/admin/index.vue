@@ -13,9 +13,18 @@
     <section class="existing-posts">
       <h5></h5>
       <!-- this list also should be filled by store like this :posts="$store.state.posts"-->
-      <PostsList
-        :posts="list"
-      />
+      <!-- the list should be a reusable component -->
+      <div v-if="$store.state.application.isLoggedIn">
+        <ul>
+          <li v-for="post in list" :key="post.id">
+            <div>{{ post.title }}</div>
+            <div>{{ post.author }}</div>
+            <button
+              @click="getSinglePostById(post.id)"
+            >edit post</button>
+          </li>
+        </ul>
+      </div>
     </section>
   </div>
 </template>
@@ -29,18 +38,27 @@ export default {
     PostsList,
     AdminLogin,
   },
+  beforeMount() {
+    if(this.$store.getters.isLoggedIn){
+      this.$store.commit('logIn', true)
+    }
+    this.getPostList()
+  },
   data(){
     return {
-      list : [
-        {
-          id: "123",
-          title: "foobar",
-          postPreview: "is a mess",
-          thumbnail: "https://i.imgur.com/8xDFw3W.jpg"
-        }
-      ]
+      list : []
     }
-  }  
+  },
+  methods: {
+   async getPostList(){
+     this.list = await this.$store.dispatch('getAllFilesFromServer')
+   },
+   getSinglePostById(id){
+     this.$store.commit('setPostIndex', id)
+     this.$router.push('/admin/edit-post')
+     
+   }
+  },
 }
 </script>
 
@@ -57,6 +75,18 @@ export default {
 
 .existing-posts h1 {
   text-align: center;
+}
+
+ul li {
+  border: 1px solid green;
+  list-style: none;
+  position: relative;
+}
+
+ul button {
+  position: absolute;
+  top: 5px;
+  right: 0px;
 }
 </style>
 

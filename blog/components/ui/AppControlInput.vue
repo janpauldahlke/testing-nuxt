@@ -4,8 +4,10 @@
     <input
       v-if="controlType === 'input'"
       v-bind="$attrs"
+      :disabled="!editable"
       :value="value"
       @input="$emit('input', $event.target.value)">
+      
     <textarea
       v-if="controlType === 'textarea'"
       rows="10"
@@ -25,7 +27,11 @@ export default {
     value: {
       type: String,
       default: ''
-    }
+    },
+    editable: {
+      type: Boolean,
+      default: true,
+    },
   }
 }
 </script>
