@@ -59,8 +59,8 @@ export default {
      this.list = await this.$store.dispatch('getAllFilesFromServer')
    },
    getSinglePostById(id){
-     this.$store.commit('setPostIndex', id)
-     this.$router.push('/admin/edit-post')
+     //this.$store.commit('setPostIndex', id)
+     this.$router.push(`/posts/${id}`)
    },
    deleteASinglePostById(id) {
      if(process.browser) {

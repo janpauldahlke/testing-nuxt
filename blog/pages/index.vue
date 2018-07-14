@@ -13,7 +13,6 @@
 
 <script>
 import PostsList from '~/components/posts/PostsList'
-import axios from 'axios'
 
 export default({
   components: {

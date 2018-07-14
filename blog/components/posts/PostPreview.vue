@@ -4,7 +4,7 @@
         class="post-preview"
         :to="`/posts/${id}`"
       >
-        <article>
+        <article class="post">
           <div 
             class="post-thumbnail"
             :style="{backgroundImage: 'url('+ thumbnail +')'}"></div>
@@ -47,6 +47,7 @@ export default {
   box-shadow: 0 2px 2px #ccc;
   background-color: white;
   width: 90%;
+  margin-bottom: 10px;
 }
 
 a {
@@ -61,20 +62,39 @@ a {
   }
 }
 
+/* media query here */
+
+@media(min-width: 768px) {
+  
+  .post-thumbnail {
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .post-content {
+    padding: 10px;
+    text-align: center;
+    height: 100%;
+    min-height: 200px;
+  }
+}
 
 .post-thumbnail {
-  width: 100%;
-  height: 200px;
-  background-position: center;
-  background-size: cover;
-}
+    width: 100%;
+    min-height: 80px;
+    background-position: center;
+    background-size: cover;
+    /*background: green;  could be anything here, as long as we are working offline*/
+  }
 
 .post-content {
-  padding: 10px;
-  text-align: center;
-  height: 100%;
-  min-height: 200px;
-}
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: center;
+    height: 100%;
+  }
 
 a:hover .post-content,
 a:active .post-content {
